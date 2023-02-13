@@ -1,19 +1,42 @@
 import { fetchContent } from "./fetch.js";
-import { createTemplateCard } from "./render.js";
-import { POP_MOVIE, POP_TV} from "./api.js"
+import {
+  createTemplateCard,
+  createTemplateHeader,
+  createTemplateFooter,
+} from "./render.js";
+import { POP_MOVIE, POP_TV, SEARCH_MOVIE } from "./api.js";
 
 async function main() {
-  const dataMovies = await fetchContent(POP_MOVIE);
-  const dataTv = await fetchContent(POP_TV);
+  try {
+    const dataMovies = await fetchContent(POP_MOVIE);
+    const dataTv = await fetchContent(POP_TV);
+    createTemplateHeader();
+    createTemplateFooter();
+    createTemplateCard(dataMovies);
+  } catch (error) {
+    console.error(error);
+  }
 
-  dataMovies.results.forEach((pelicula) => {
-    console.log(dataMovies)
-    createTemplateCard(pelicula);
-  });
+  // document.querySelector("form").addEventListener("submit", (event) => {
+  //   event.preventDefault();
+  //   const movieName = document.querySelector("input").value;
+  //   searchMovies(movieName).then((movies) => {
+  //     window.location.href = "list.html";
+  //     localStorage.setItem("movies", JSON.stringify(movies));
+  //   });
+  // });
 
-  dataTv.results.forEach((serie)=>{
-    createTemplateCard(serie);
-  })
+  // async function searchMovies(movieName) {
+  //   const url = `${SEARCH_MOVIE}&query=${movieName}`;
+  //   const movies = await fetchContent(url);
+  //   return movies.results;
+  // }
+
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const movies = JSON.parse(localStorage.getItem("movies"));
+  //   console.log(movies)
+  //   displayMovies(movies);
+  // });
 }
 
 main();

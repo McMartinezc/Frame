@@ -10,3 +10,11 @@ function getColor(vote){
     }
     return color;
 }
+
+//Funció random per mostrar aleatoria
+function getRandomShow (min,max){
+    return Math.floor(Math.random()*(max-min)) + min ;
+}
+
+console.log(getRandomShow(1, data.results.length));
+

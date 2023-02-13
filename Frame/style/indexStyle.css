@@ -222,7 +222,7 @@ main{
 /*endRegion*
 
 /*Region footer*/
-#footer{
+.footer{
     background-color: var(--gris-fosc);
     color:var(--blanc);
     display: flex;
