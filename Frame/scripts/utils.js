@@ -1,5 +1,5 @@
-//Funció que pinta el color la valoració de la pelicula
-function getColor(vote){
+//Funció que pinta el color depenent de la valoració de la pelicula
+export function getColorScore(vote){
     let color;
     if(vote>=8){
         color="green";
@@ -11,10 +11,10 @@ function getColor(vote){
     return color;
 }
 
-//Funció random per mostrar aleatoria
-function getRandomShow (min,max){
-    return Math.floor(Math.random()*(max-min)) + min ;
-}
+// //Funció random per mostrar aleatoria
+// function getRandomShow (min,max){
+//     return Math.floor(Math.random()*(max-min)) + min ;
+// }
 
-console.log(getRandomShow(1, data.results.length));
+// console.log(getRandomShow(1, data.results.length));
 

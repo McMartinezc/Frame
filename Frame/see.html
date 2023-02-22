@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="ca-ES">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
     <link rel="stylesheet" href="style/fonts.css" type="text/css">
     <link rel="stylesheet" href="style/indexStyle.css" type="text/css">
-    <!--JS-->
-    <script src="modules/index.js" type="modules"></script>
-    <title>Què veure?</title>
-</head>
+     <!--JS-->
+     <script src="./scripts/see.js" type="module"></script>
 
-<body>
+    <title>Què veure?</title>
+  </head>
+  <body>
     <header class="inici">
-        <div class="cabecera">
-            <!--Logo-->
-            <img class="logo" alt="Frame" src="img/logo.svg">
-            <!--Menú navegació-->
-            <nav class="menu">
-                <ul>
-                    <li><a class="enlace" href="index.html">Home</a></li>
-                    <li><a class="enlace" href="list.html">Llista</a></li>
-                    <li><a class="enlace" href="see.html">Què veure?</a></li>
-                    <!--Búsqueda-->
-                    <li><input type="text" placeholder="" class="cercador"></li>
-                </ul>
-            </nav>
+      <div class="cabecera">
+        <!--Logo-->
+        <img class="logo" alt="Frame" src="img/logo.svg">
+        <!--Menú navegació-->
+        <nav class="menu">
+          <ul>
+            <li><a class="enlace" href="index.html">Home</a></li>
+            <li><a class="enlace" href="list.html">Llista</a></li>
+            <li><a class="enlace" href="see.html">Què veure?</a></li>
+            <!--Búsqueda-->
+            <li><input type="text" placeholder="" class="cercador"></li>
+            <!-- Botones de Películas y Series -->
+            <li><button id="btnPeliculas" class="button-peliculas cerca">Pel·lícules</button></li>
+            <li><button id="btnSeries" class="button-series cerca">Sèries</button></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
-        <section class="novetats">
-            <header>
-                <h2>Què veure?</h2>
-            </header>
-        </section>
+      <section class="novetats">
+        <header>
+          <h2>Què veure?</h2>
+        </header>
+        <p id="resultado"></p>
+      </section>
     </main>
-    <div id="footer"></div>
-</body>
+  </body>
 </html>

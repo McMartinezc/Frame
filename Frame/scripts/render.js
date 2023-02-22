@@ -1,33 +1,5 @@
 import { URL_IMG } from "./api.js";
-
-
-export async function createTemplateCard(cardData) {
-  try {
-    const response = await fetch('templates.html')
-
-    if (response.ok) {
-      const templates = document.createElement('template')
-      templates.innerHTML = await response.text()
-      const cardTemplate = templates.content.querySelector('#template-card').content
-
-      // Crea una copia del template para cada tarjeta
-      cardData.forEach(data => {
-        const cardInstance = document.importNode(cardTemplate, true)
-        // Actualiza los valores del template con la información de la tarjeta
-        cardInstance.querySelector(".poster").src = URL_IMG + data.poster_path;
-        cardInstance.querySelector(".poster").alt = data.title;
-        cardInstance.querySelector(".card-title").textContent = data.title;
-        cardInstance.querySelector("p").textContent = data.release_date;
-        cardInstance.querySelector("span").textContent = data.vote_average;
-
-        // Agrega la tarjeta al contenedor
-        document.querySelector(".llista-novetats").appendChild(cardInstance)
-      })
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
+import { getColorScore } from "./utils.js";
 
 //Template de fitxa de la card seleccionada
 export async function createTemplateFitxa(fitxa) {
@@ -36,7 +8,7 @@ export async function createTemplateFitxa(fitxa) {
   const clone = template.content.cloneNode(true);
 
   clone.querySelector(".trailer").src = URL_IMG + fitxa.poster_path;
-  //Trailer???
+  clone.querySelector(".trailer").src = fitxa.video;
   clone.querySelector(".fitxa-title").textContent = fitxa.title;
   clone.querySelector("fitxa-data").textContent = fitxa.release_date;
   clone.querySelector("fitxa-durada").textContent = fitxa.runtime;
@@ -65,31 +37,67 @@ export function displayMovies(movies) {
   }
   list.appendChild(clone);
 }
-  //Template footer 
-  export async function createTemplateFooter(){
-    try{
-      const response = await fetch("templates.html");
-      if(response.ok){
-        const templates = document.createElement('template')
-        templates.innerHTML = await response.text()
-        const footerTemplate = templates.content.querySelector('#template-footer').content
-        document.querySelector('.footer').appendChild(footerTemplate)
-      }
-    }catch(error){
-      console.log(error);
+//Template footer
+export async function createTemplateFooter() {
+  try {
+    const response = await fetch("templates.html");
+    if (response.ok) {
+      const templates = document.createElement("template");
+      templates.innerHTML = await response.text();
+      const footerTemplate =
+        templates.content.querySelector("#template-footer").content;
+      document.querySelector(".footer").appendChild(footerTemplate);
     }
+  } catch (error) {
+    console.log(error);
   }
-  //Template header
-  export async function createTemplateHeader(){
-    try {
-      const response = await fetch("templates.html");
-      if(response.ok){
-        const templates = document.createElement('template')
-        templates.innerHTML = await response.text()
-        const headerTemplate = templates.content.querySelector('#template-header').content
-        document.querySelector('.inici').appendChild(headerTemplate)
-      }
-    } catch (error) {
-      console.log(error);
+}
+//Template header
+export async function createTemplateHeader() {
+  try {
+    const response = await fetch("templates.html");
+    if (response.ok) {
+      const templates = document.createElement("template");
+      templates.innerHTML = await response.text();
+      const headerTemplate =
+        templates.content.querySelector("#template-header").content;
+      document.querySelector(".inici").appendChild(headerTemplate);
     }
+  } catch (error) {
+    console.log(error);
   }
+}
+//Template cards movie-tv
+export async function createTemplateCard(cardData) {
+  try {
+    const response = await fetch("templates.html");
+
+    if (response.ok) {
+      const templates = document.createElement("template");
+      templates.innerHTML = await response.text();
+      const cardTemplate =
+        templates.content.querySelector("#template-card").content;
+
+      cardData.forEach((data) => {
+        const cardInstance = document.importNode(cardTemplate, true);
+        cardInstance.id = data.id;
+        cardInstance.querySelector(".poster").src = URL_IMG + data.poster_path;
+        cardInstance.querySelector(".poster").alt = data.title || data.name;
+        cardInstance.querySelector(".card-title").textContent =
+          data.title || data.name;
+        cardInstance.querySelector("p").textContent =
+          data.release_date || data.first_air_date;
+        cardInstance.querySelector("span").textContent = data.vote_average;
+        const score = data.vote_average;
+        const color = getColorScore(score);
+        cardInstance.querySelector("span").style.color = color;
+        const container =
+          data.media_type === "movie" ? ".llista-novetats" : ".llista-series";
+        document.querySelector(container).appendChild(cardInstance);
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
