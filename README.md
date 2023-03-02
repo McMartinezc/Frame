@@ -1,6 +1,5 @@
 # Frame
 
-# Frame
 ##Memòria tècnica: Aplicació web amb API TMDB
 
 ###**Introducció**
