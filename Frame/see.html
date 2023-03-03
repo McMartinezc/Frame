@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ca-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--CSS-->
+  <link rel="stylesheet" href="style/fonts.css" type="text/css">
+  <link rel="stylesheet" href="style/indexStyle.css" type="text/css">
+  <!--JS-->
+  <script src="./scripts/see.js" type="module"></script>
+
+  <title>Què veure?</title>
+</head>
+
+<body>
+  <header class="inici see">
+    <div class="cabecera">
+      <!--Logo-->
+      <img class="logo" alt="Frame" src="img/logo.svg">
+      <!--Menú navegació-->
+      <nav class="menu">
+        <ul>
+          <li><a class="enlace" href="index.html">Home</a></li>
+          <li><a class="enlace" href="list.html">Llista</a></li>
+          <li><a class="enlace" href="see.html">Què veure?</a></li>
+          <!-- Búsqueda
+          <li><input type="text" placeholder="" class="cercador"></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="container">
+      <header>
+        <h2>Què veure?</h2>
+      </header>
+      <!-- Botones de Películas y Series -->
+      <p class="text-center fs20 mtb20">Què prefereixes veure una pel·lícula o una sèrie. Escull!</p>
+      <ul class="buttons">
+        <li><button id="btn-pelis" class="button-peliculas cerca">Pel·lícules</button></li>
+        <li><button id="btn-series" class="button-series cerca">Sèries</button></li>
+      </ul>
+      <section id="resultado" class="info"></section>
+    </section>
+  </main>
+   <!--Footer-->
+   <footer class="footer"></footer>
+</body>
+
+</html>
