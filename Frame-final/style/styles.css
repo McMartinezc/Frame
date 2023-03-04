@@ -1,0 +1,714 @@
+/*#region Reset*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    /*16px*/
+}
+
+/*#endregion*/
+
+/*#region Declarem variables*/
+:root {
+    /* --verd-fosc: #87A497; */
+    --verd-fosc:#729485;
+    --verd-clar: #B4D1C6;
+    --blanc: #F2F4F5;
+    --blau:#374785;
+    --blau-hover: #5466AA;
+    --gris-fosc: #2D2D2D;
+    --gris-hover: #575757;
+    --font-normal: 'Noto Sans';
+    --font-semi: 'Noto Sans Semi';
+    --font-light: 'Noto Sans light';
+}
+
+/*#endregion*/
+
+body {
+    background-color: var(--verd-fosc);
+    font-family: var(--font-normal);
+    font-size: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100vh;
+    position: relative;
+}
+
+/*#region capçalera logo + menu navegació*/
+.inici {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 36px;
+}
+
+.center {
+    text-align: center;
+}
+
+/*#endregion*/
+
+/*logo*/
+.logo {
+    width: 210px;
+    margin-left: 40px;
+}
+
+/*#region Menu navegació*/
+.menu {
+    margin-right: 40px;
+}
+
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.enlace {
+    text-decoration: none;
+    color: #2D2D2D;
+    font-size: 18px;
+    font-family: var(--font-semi);
+}
+
+.enlace:hover {
+    color: var(--verd-clar);
+}
+
+/*#endregion*/
+
+/*#region Barra de búsqueda*/
+.search {
+    width: 848px;
+    height: 47px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding-left:20px;
+    font-size: 16px;
+}
+
+.search::placeholder {
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: var(--verd-clar);
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 36px;
+}
+
+#form label {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#search {
+    width: 40%;
+    min-width: 320px;
+    height: 45px;
+    background: var(--blanc);
+    border-radius: 15px;
+    padding: 16px;
+    font-size: 16px;
+    outline: 0;
+    /*Opció d'accebilitat, requadre en la caixa text*/
+}
+
+#search[placeholder] {
+    color: var(--verd-clar);
+}
+
+#search:focus {
+    color: var(--gris-fosc);
+    background-color: var(--verd-clar);
+}
+
+/*#endregion*/
+
+/*#region Barra búsqueda dinàmica, al fer click s'obre*/
+.cercador {
+    background: var(--verd-clar) url(../img/lupa-icon.svg) no-repeat 7px 7px;
+    background-size: 30px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    width: 44px;
+    height: 44px;
+    padding: 20px;
+
+    font-size: 20px;
+
+    transition: all 0.5s;
+}
+
+.cercador:hover,
+.cercador:focus {
+    width: 250px;
+    background: var(--verd-clar) url(../img/lupa-icon.svg) no-repeat 200px 7px;
+    background-size: 30px;
+}
+
+/*#endregion*/
+
+/*#region Boto*/
+.cerca {
+    background-color: var(--blau);
+    color: var(--blanc);
+    font-size: 20px;
+    width: 5%;
+    min-width: 120px;
+    height: 45px;
+    border-radius: 15px;
+}
+
+.cerca:hover {
+    background-color: var(--blau-hover);
+}
+
+/*#endregion*/
+
+/*main*/
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*#region Secció */
+.container {
+    width: 80%;
+}
+
+.container h2 {
+    /* font-size: 50px; */
+    margin-bottom: 20px;
+}
+
+/*#endregion*/
+
+/*#region Cards movie*/
+
+.llista-novetats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, auto));
+    grid-gap: 1vw;
+    margin-bottom: 15px;
+    ;
+}
+
+.movie {
+    width: 160px;
+    background: var(--blanc);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 13px;
+}
+
+.movie img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.movie-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    margin-top: 18px;
+    position: relative;
+    height: 100%;
+}
+
+.movie-info div {
+    /* display: flex; */
+    display: grid;
+    height: 100%;
+    /* flex-direction: column; */
+    flex-basis: 100%;
+}
+
+.movie-info h3 {
+    line-height: 100%;
+    color: var(--verd-fosc);
+    font-family: var(--font-semi);
+}
+
+.movie-info p {
+    font-family: var(--font-light);
+    align-self: flex-end;
+}
+
+.puntuacio {
+    width: 50px;
+    height: 50px;
+    background-color: var(--blau);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -100%);
+}
+
+/*#endregion*/
+
+/*#region list*/
+
+#results {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+}
+
+.list-item {
+    display: flex;
+    gap:20px;
+
+    width:90%;
+    background-color: var(--blanc);
+    border-radius: 15px;
+    margin:0 0 20px 0;
+    padding:20px;
+    align-items: flex-start;
+}
+
+.list-item img {
+    width: 100px;
+    height: fit-content;
+}
+
+.list-item section {
+    width: 100%;
+}
+
+.list-item section div {
+    display: flex;
+    flex-direction: column;
+
+    gap:10px;
+}
+
+.list-item header {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-item .overview {
+    width: 90%;
+}
+
+
+/*#endregion*/
+
+/*#region footer*/
+.footer {
+    background-color: var(--gris-fosc);
+    color: var(--blanc);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: auto;
+
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: right;
+    gap: 8px;
+}
+
+.social {
+    display: inherit;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.social a:hover,
+.tmdb a:hover {
+    opacity: 0.5;
+}
+
+.tmdb {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.tmdb img {
+    height: 70px;
+}
+
+/*#endregion*/
+
+/*#region Colors de la puntuació*/
+.green {
+    color: rgb(00,240,00);
+}
+
+.orange {
+    /* color: rgb(255,163,26); */
+    color: #ffa829;
+}
+
+.red {
+    color: rgb(255,26,26);
+}
+
+/*#endregion*/
+
+/*#region Style pàgina see.html*/
+.see {
+    height: 180px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5vW;
+}
+
+.buttons li {
+    list-style-type: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.vote {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    background-color: var(--blau);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/*#endregion*/
+
+/*#region classe style comú*/
+.mtb20 {
+    margin: 20px 0 20px 0;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fs40 {
+    font-size: 40px;
+}
+
+.typescale21,
+.typescale28,
+.typescale37,
+.typescale50,
+.typescale67 {
+    margin: 1.38rem 0 1.38rem 0;
+    line-height: 1.3;
+}
+
+.typescale67 {
+    font-size: 4.209rem;
+    line-height: 110%;
+    /*h1*/
+}
+
+.typescale50 {
+    font-size: 3.157rem;
+    line-height: 110%;
+    /*h2*/
+}
+
+.typescale37 {
+    font-size: 2.369rem;
+    /*h3*/
+}
+
+.typescale28 {
+    font-size: 1.777rem;
+    /*h4*/
+}
+
+.typescale21 {
+    font-size: 1.333rem;
+    /*h5*/
+}
+/*#endregion*/
+
+/*#region Info detallada de la peli o serie*/
+.info {
+    margin-top: 50px;
+}
+
+.info article {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    background-color: var(--blanc);
+    margin-bottom: 50px;
+    flex-direction: row;
+}
+
+.info article img {
+    min-width: 150px;
+    height: fit-content;
+}
+
+.info article section {
+    flex-basis: 80%;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.text-light {
+    font-family: var(--font-light);
+}
+
+.data {
+    font-family: var(--font-light);
+}
+
+.info header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--verd-fosc)
+}
+
+.info h2 {
+    flex-basis: 70%;
+    color: var(--verd-fosc);
+}
+
+.info .overview {
+    font-family: var(--font-normal);
+}
+
+.info .extra {
+    padding-top: 10px;
+    font-size: 14px;
+    font-family: var(--font-semi);
+
+}
+
+/*#endregion*/
+
+/*#region Estilo para la ventana modal */
+.mostrar {
+    display: none!important;
+}
+
+.inicial {
+    display: none;
+}
+
+div.modal article section div {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+div.modal header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal article {
+    display: flex;
+    position: relative;
+    background-color: var(--blanc);
+    /* max-width: 800px; */
+    max-width: 80%;
+    width: 100%;
+    /* max-height: 500px; */
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+img.btn-tancar {
+    width: 20px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: block;
+}
+
+img.btn-afegir {
+    width: 25px;
+    position: absolute;
+    top: 60px;
+    right: 28px;
+    display: block;
+}
+
+img.btn-afegir:hover, img.btn-tancar:hover  {
+    opacity: 0.5;
+}
+
+.modal .poster {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+/*#endregion*/
+
+.list-item h2, .modal h2 {
+    color:var(--verd-fosc)
+}
+
+/*Media queries*/
+@media screen and (min-width:375px) and (max-width:750px) {
+
+    /*#region cabecera*/
+
+    div.cabecera {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .menu {
+        margin-top: 20px;
+        margin-right: 0;
+    }
+
+    /*#endregion cabecera*/
+
+    .container {
+        width: 90%;
+    }
+
+    /*#region Que veure*/
+
+    .container h1 {
+        text-align: center;
+    }
+
+    /*#endregion*/
+
+    .llista-novetats {
+        row-gap: 2.5vw;
+    }
+
+    .modal article {
+        flex-direction: column;
+    }
+
+    .info article {
+        flex-direction: column;
+    }
+
+    .info article img {
+        width: 100%;
+    }
+
+    .modal article .poster {
+        display: none;
+    }
+
+    .modal h2 {
+        font-size: 28px;
+        width: 85%;
+    }
+
+    /* .modal .overview {
+        overflow: hidden;
+        overflow-wrap: break-word;
+        max-width: 600ch;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }  */
+
+    .modal .data, .modal .companie {
+        display: none;
+    }
+
+    .modal .extra {
+        font-size: 14px;
+    }
+
+    .list-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .list-item img {
+        width: inherit;
+    }
+}
