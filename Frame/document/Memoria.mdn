@@ -1,0 +1,26 @@
+Frame 
+
+Funcionalitats:
+Pàgina principal mostra pel.licules i sèries més populars.
+Es podrà realitzar una búsqueda de pel.licula o sèrie.
+Podrem realitzar una llista de pel.licules o sèries.
+Podrem realitzar una votació.
+Hi haurà una funcionalitat que serà random que mostri quina pel.licula o sèrie pots visualitzar.
+
+Disseny realitzat a Figma.
+
+Estructura codi:
+Pàgina principal-> Index
+Pàgina que mostra- la llista creada pel usuari
+
+Disseny aplicat a la carpeta CSS.
+
+API utilitzada: TMDB
+
+Realització:
+1- Comprovació de comunicació amb la API (clau), funcionalitats de la API.
+2- Realitzar disseny a Figma, selecció de colors, fonts...
+3- Plasmar el disseny realitzat a Figma amb CSS.
+4- Comunicació API amb la pàgina principal, per mostrar pel.licules populars.
+
+
