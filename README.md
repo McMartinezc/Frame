@@ -1,4 +1,6 @@
-﻿# Frame: Aplicació web amb API TMDB
+﻿![Títol](./Frame/titol.png)
+
+# Frame: Aplicació web amb API TMDB
 
 ## Introducció
 
@@ -47,7 +49,7 @@ El disseny de l'aplicació s'ha desenvolupat amb l'eina Figma, on s'han realitza
 
 ![Índex](./Frame/index-carrousel.png)
 
-**Pàgina búsqueda:**
+**Pàgina cerca:**
 
 ![Cerca](./Frame/Busqueda.png)
 
@@ -58,7 +60,6 @@ En reproduir el disseny realitzat a **Figma**, la maquetació ha sigut principal
 Per tal de poder desenvolupar l'estructura i el contingut de la pàgina, s'ha creat un arbre de continguts amb l'eina Xmind, que mostra l'organització de les diferents seccions i subseccions de la pàgina.
 
 **Arbre de la Web**
-
 ![Esquema web](./Frame/Esquema.png)
 
 ## Funcionalitats
@@ -111,12 +112,12 @@ Frame
 ├── list.html
 │
 ├── see.html
-└── templates
+└── templates.html
 ```
 
 Per poder fer la crida a l'API TMDB, es va crear un archiu anomenat `scripts/fecth.js`
 
-En aquest directori es troven dues funcions:
+En aquest directori es troben dues funcions:
 
 - La primera afegeix una propiedad _media_type_ a cada objecte, amb el valor de _movie_, si l'objecte té la propietat _title_, o _tv_ si té com a propietat _name_. Ens serveix per diferenciar si és una pel·lícula o una sèrie:
 
@@ -149,7 +150,7 @@ async function fetchContent(url) {
 
 ```javascript
 export async function fetchDetails(mediaType, id) {
-  const API_KEY = "api_key=76ae581f1d594bc56d7dab63f40b4ed9";
+  const API_KEY = "api_key=     ";
   const API_BASE = "https://api.themoviedb.org/3";
 
   const url = `${API_BASE}/${mediaType}/${id}?${API_KEY}&language=ca`;
@@ -225,9 +226,28 @@ Finalment `getResults`mostra el resultat, en un llistat. El llistat es crea amb 
 
 Es van intentar unificar la funcionalitat de les funcions tant per la pàgina `index.html` i `list.html`, però en inserir el resultat a la pàgina `list.html` donava problemes, ja que a la renderització del **template** està assignat amb una **classe** o **id** i en fer la inserció aquesta utilitzava la mateixa que una altra renderització de resultats, per tant, el resultat que es creava era que la llista de resultats trobats a la cerca i la llista d'afegits formessin una sola llista. Aquest és un punt a millorar i unificar funcions.
 
+#### Puntuació
+
+Al director `scripts/utils.js`, hi ha la funció `getColorScore` que s'encarrega de pintar depenent de la valoració que té la pel·lícula o la sèrie.
+
+```javascript
+//Funció que pinta el color depenent de la valoració de la pelicula
+export function getColorScore(vote) {
+  let color;
+  if (vote >= 8) {
+    color = "rgb(00,240,00)";
+  } else if (vote >= 5) {
+    color = "#ffa73b";
+  } else {
+    color = "rgb(255,26,26)";
+  }
+  return color;
+}
+```
+
 #### Llistat
 
-A llistat trovem un llistat d'afegits desde `index.html`. Per poder fer aquesta funcionalitat s'utilitza el LocalStorage. Les funcions utilitzades es troven a `utils.js` i són: `setList`i `listFavorits`.
+A llistat trobem un llistat d'afegits desde `index.html`. Per poder fer aquesta funcionalitat s'utilitza el LocalStorage. Les funcions utilitzades es troben a `utils.js` i són: `setList`i `listFavorits`.
 
 ```javascript
 export function setList(movieData) {
@@ -283,3 +303,6 @@ Ha quedat pendent d'implementar els logos de les plataformes on es poden visuali
 També quins actors/actrius participen en les pel·lícules o sèries, i la implementació d'un apartat dedicat als actors/actrius més populars, cerca, etc.
 
 Finalment, també queda pendent millorar el codi i unificar funcions.
+
+**Resulat final de la web:**
+[Frame](https://psyence.neocities.org/)
